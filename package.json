@@ -1,0 +1,11 @@
+{
+    "name": "iota-donation-bot",
+    "version": "1.0.0",
+    "description": "Donate iota",
+    "main": "bot.js",
+    "author": "wh0_cares",
+    "dependencies": {
+        "discord.js": "^11.3.0"
+    },
+    "devDependencies": {}
+}

@@ -5,7 +5,13 @@
     "main": "bot.js",
     "author": "wh0_cares",
     "dependencies": {
-        "discord.js": "^11.3.0"
+        "bluebird": "^3.5.1",
+        "discord.js": "^11.3.0",
+        "pg-promise": "^7.4.1"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "scripts": {
+        "start": "node bot.js",
+        "start:dev": "nodemon bot.js"
+    }
 }

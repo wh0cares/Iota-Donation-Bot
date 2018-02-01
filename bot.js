@@ -1,16 +1,24 @@
 var Discord = require('discord.js');
+var config = require('./config.json');
 var client = new Discord.Client();
 
-var config = require('./config.json');
-
-var HelpCommand = require('./commands/help.js');
+var promise = require('bluebird');
+var options = {
+    promiseLib: promise
+};
+var pgp = require('pg-promise')(options);
+var connection = ('postgres://%s:%s@%s:%d/%s', config.postgresql.username, config.postgresql.password, config.postgresql.host, config.postgresql.port, config.postgresql.database);
+var db = pgp(connection);
+var HelpCommand = require('./commands/help');
+var BalanceCommand = require('./commands/balance');
 
 client.on('ready', () => {
 	console.log('Client connected!');
 });
 
 var commands = {
-	'help': new HelpCommand()
+	'help': new HelpCommand(),
+	'balance': new BalanceCommand()
 }
 
 client.on('message', message => {
@@ -42,4 +50,4 @@ client.on('message', message => {
 	}
 });
 
-client.login(config.token);
+client.login(config.discord.token);

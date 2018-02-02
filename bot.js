@@ -2,15 +2,8 @@ var Discord = require('discord.js');
 var config = require('./config.json');
 var client = new Discord.Client();
 
-var promise = require('bluebird');
-var options = {
-    promiseLib: promise
-};
-var pgp = require('pg-promise')(options);
-var connection = ('postgres://%s:%s@%s:%d/%s', config.postgresql.username, config.postgresql.password, config.postgresql.host, config.postgresql.port, config.postgresql.database);
-var db = pgp(connection);
-var HelpCommand = require('./commands/help');
-var BalanceCommand = require('./commands/balance');
+var HelpCommand = require('./lib/commands/help');
+var BalanceCommand = require('./lib/commands/balance');
 
 client.on('ready', () => {
 	console.log('Client connected!');

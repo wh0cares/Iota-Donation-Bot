@@ -1,9 +1,15 @@
 var Discord = require('discord.js');
 var config = require('./config.json');
 var client = new Discord.Client();
+var IOTA = require('iota.lib.js');
 
 var HelpCommand = require('./lib/commands/help');
 var BalanceCommand = require('./lib/commands/balance');
+
+var iota = new IOTA({
+    'host': 'http://localhost',
+    'port': 14265
+});
 
 client.on('ready', () => {
 	console.log('Client connected!');
@@ -42,5 +48,5 @@ client.on('message', message => {
 		cmd.invoke(message, args);
 	}
 });
-
+module.exports.iota = iota;
 client.login(config.discord.token);

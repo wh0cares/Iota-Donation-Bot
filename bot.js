@@ -6,6 +6,7 @@ var IOTA = require('iota.lib.js');
 var HelpCommand = require('./lib/commands/help');
 var BalanceCommand = require('./lib/commands/balance');
 var DepositCommand = require('./lib/commands/deposit');
+var WithdrawCommand = require('./lib/commands/withdraw');
 
 var iota = new IOTA({
 	'host': config.iota.host,
@@ -19,7 +20,8 @@ client.on('ready', () => {
 var commands = {
 	'help': new HelpCommand(),
 	'balance': new BalanceCommand(),
-	'deposit': new DepositCommand()
+	'deposit': new DepositCommand(),
+	'withdraw': new WithdrawCommand()
 }
 
 client.on('message', message => {

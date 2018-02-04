@@ -5,10 +5,11 @@ var IOTA = require('iota.lib.js');
 
 var HelpCommand = require('./lib/commands/help');
 var BalanceCommand = require('./lib/commands/balance');
+var DepositCommand = require('./lib/commands/deposit');
 
 var iota = new IOTA({
-    'host': 'http://localhost',
-    'port': 14265
+	'host': config.iota.host,
+	'port': config.iota.port
 });
 
 client.on('ready', () => {
@@ -17,7 +18,8 @@ client.on('ready', () => {
 
 var commands = {
 	'help': new HelpCommand(),
-	'balance': new BalanceCommand()
+	'balance': new BalanceCommand(),
+	'deposit': new DepositCommand()
 }
 
 client.on('message', message => {
